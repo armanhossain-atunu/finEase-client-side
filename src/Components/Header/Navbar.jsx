@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import MyLink from "./MyLink";
 import { Link } from "react-router";
 import MyContainer from "../MyContainer";
+import Button from "../Button";
 
 const Navbar = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
@@ -37,7 +38,7 @@ const Navbar = () => {
   return (
     <div className="bg-base-100  shadow-sm  top-0 left-0 w-full fixed to-0 z-50">
       <MyContainer>
-        <div className="navbar ">
+        <div className="navbar p-0 ">
           <div className="navbar-start">
             <div className="dropdown">
               <div
@@ -126,8 +127,8 @@ const Navbar = () => {
                 </g>
               </svg>
             </label>
-            <Link to="/auth/login" className="btn btn-bg text-white">
-              Sign In
+            <Link to="/auth/login" className=" text-white">
+              <Button> Sign In</Button>
             </Link>
           </div>
         </div>

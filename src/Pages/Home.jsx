@@ -1,11 +1,16 @@
-import React from 'react';
+import React from "react";
+import Banner from "../Components/Header/Banner";
+import Budgeting from "../Components/Budgeting";
+import Stat from "../Components/Stat";
 
 const Home = () => {
-    return (
-        <div>
-            <h1>Home Page</h1>
-        </div>
-    );
+  return (
+    <div>
+      <Banner></Banner>
+      <Budgeting></Budgeting>
+      <Stat></Stat>
+    </div>
+  );
 };
 
 export default Home;
