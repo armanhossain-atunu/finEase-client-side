@@ -5,7 +5,7 @@ import { FcDownload } from "react-icons/fc";
 const Stat = () => {
   return (
     <MyContainer className="text-center py-10">
-      <div className="flex">
+      <div className="flex flex-col md:flex-row justify-between">
         <div className=" stat flex flex-col justify-center items-center">
           <div className="font-bold text-2xl">Downloads</div>
           <div className="stat-value">14 M</div>
