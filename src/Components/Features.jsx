@@ -19,7 +19,7 @@ const Features = () => {
                 <details
                   className="collapse bg-base-100 border border-base-300"
                   name="my-accordion-det-1"
-                  open
+                 
                 >
                   <summary className="collapse-title font-semibold">
                     Easy Content Access
@@ -42,7 +42,6 @@ const Features = () => {
                 <details
                   className="collapse bg-base-100 border border-base-300"
                   name="my-accordion-det-1"
-                  open
                 >
                   <summary className="collapse-title font-semibold">
                     Reinforced Filter
@@ -65,7 +64,7 @@ const Features = () => {
                 <details
                   className="collapse bg-base-100 border border-base-300"
                   name="my-accordion-det-1"
-                  open
+                  
                 >
                   <summary className="collapse-title font-semibold">
                     Photo Save
@@ -89,7 +88,7 @@ const Features = () => {
                 <details
                   className="collapse bg-base-100 border border-base-300"
                   name="my-accordion-det-1"
-                  open
+                 
                 >
                   <summary className="collapse-title font-semibold">
                     Improved
@@ -114,12 +113,18 @@ const Features = () => {
           <div className="space-y-3">
             <div className="flex flex-row-reverse items-center group  gap-5">
               <div className="text-left">
-                <h1 className="text-2xl font-bold">
-                  Aesthetically Improved Charts
-                </h1>
-                <p className="text-gray-500">
-                  Review your expenses with improved and well-organized charts
-                </p>
+                <details
+                  className="collapse bg-base-100 border border-base-300"
+                  name="my-accordion-det-1"
+                
+                >
+                  <summary className="collapse-title font-semibold">
+                    Aesthetically Improved Charts more
+                  </summary>
+                  <div className="collapse-content text-sm">
+                    Review your expenses with improved and well-organized charts{" "}
+                  </div>
+                </details>
               </div>
               <div className="flex items-center justify-center w-30 h-30 border group-hover:bg-[#875DF8] duration-500 border-[#875DF8] rounded-full">
                 <img
@@ -131,12 +136,18 @@ const Features = () => {
             </div>
             <div className="flex flex-row-reverse items-center group gap-5">
               <div className="flex flex-col justify-start">
-                <h1 className="text-2xl font-bold">
-                  Easier Double-entry Booking
-                </h1>
-                <p className="text-gray-500">
-                  Manage your savings, insurance, loans and real-estate
-                </p>
+                <details
+                  className="collapse bg-base-100 border border-base-300"
+                  name="my-accordion-det-1"
+                 
+                >
+                  <summary className="collapse-title font-semibold">
+                    Easier Double-entry Booking
+                  </summary>
+                  <div className="collapse-content text-sm">
+                    Manage your savings, insurance, loans and real-estate
+                  </div>
+                </details>
               </div>
               <div className="flex items-center justify-center w-30 h-30 border group-hover:bg-[#875DF8] duration-500 border-[#875DF8] rounded-full">
                 <img
@@ -148,10 +159,18 @@ const Features = () => {
             </div>
             <div className="flex flex-row-reverse items-center group gap-5">
               <div>
-                <h1 className="text-2xl font-bold">Advanced Budget Feature</h1>
-                <p className="text-gray-500">
-                  Set a monthly budget for each category
-                </p>
+                <details
+                  className="collapse bg-base-100 border border-base-300"
+                  name="my-accordion-det-1"
+                
+                >
+                  <summary className="collapse-title font-semibold">
+                    Advanced Budget Feature
+                  </summary>
+                  <div className="collapse-content text-sm">
+                    Set a monthly budget for each category
+                  </div>
+                </details>
               </div>
               <div className="flex items-center justify-center w-30 h-30 border group-hover:bg-[#875DF8] duration-500 border-[#875DF8] rounded-full">
                 <img
@@ -163,10 +182,18 @@ const Features = () => {
             </div>
             <div className="flex flex-row-reverse items-center group gap-5">
               <div>
-                <h1 className="text-2xl font-bold">Asset Graphs</h1>
-                <p className="text-gray-500">
-                  Review asset trend in your chart
-                </p>
+                <details
+                  className="collapse bg-base-100 border border-base-300"
+                  name="my-accordion-det-1"
+                  
+                >
+                  <summary className="collapse-title font-semibold">
+                    Asset Graphs
+                  </summary>
+                  <div className="collapse-content text-sm">
+                    Review asset trend in your chart
+                  </div>
+                </details>
               </div>
 
               <div className="flex items-center justify-center w-30 h-30 border group-hover:bg-[#875DF8] duration-500 border-[#875DF8] rounded-full">

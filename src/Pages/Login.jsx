@@ -1,23 +1,28 @@
-import { useState } from "react";
-import { FaEye, FaGithub, FaGithubSquare, FaLinkedin } from "react-icons/fa";
+import { useContext, useState } from "react";
+import { FaEye, FaGithubSquare, FaLinkedin } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { FiEyeOff } from "react-icons/fi";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import loginImg from "../assets/login-img.jpg";
 import loginLogo from "../assets/logo-white.png";
 import { FaSquareXTwitter } from "react-icons/fa6";
+import { AuthContext } from "../Context/AuthContext";
 
 const Login = () => {
   const [error, setError] = useState("");
-
   const [show, setShow] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
+  const { user, googleWithLogin } = useContext(AuthContext);
+  console.log(user);
   const handelLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
+
     // console.log(email, password);
     const passwordRegex =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
@@ -33,6 +38,8 @@ const Login = () => {
         console.log(user);
         toast.success("Login Successfully");
 
+        setLoading(false);
+
         form.reset();
       })
       .catch((error) => {
@@ -44,7 +51,20 @@ const Login = () => {
         }
       });
   };
-  const handleGoogleLogin = () => {};
+
+  const handleGoogleLogin = () => {
+    googleWithLogin()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div>
       <div className="mx-auto bg-base-200 pt-18 min-h-[85vh]">
@@ -139,13 +159,13 @@ const Login = () => {
               <div className="divider mt-0">OR</div>
               <div className="card rounded-box grid place-items-center"></div>
             </div>
-            <div className="text-center flex justify-center items-center gap-2.5">
-              <button onClick={handleGoogleLogin} className="btn">
+            <div className="flex justify-center">
+              <button
+                onClick={handleGoogleLogin}
+                className="btn w-[90%] text-2xl"
+              >
                 <FcGoogle />
                 Google
-              </button>
-              <button className="btn">
-                <FaGithub /> Github
               </button>
             </div>
             <div className="text-center my-5">

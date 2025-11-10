@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import MyLink from "./MyLink";
 import { Link } from "react-router";
 import MyContainer from "../MyContainer";
 import Button from "../Button";
+import { AuthContext } from "../../Context/AuthContext";
 
 const Navbar = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const { user, loading, logOut } = useContext(AuthContext);
   useEffect(() => {
     const html = document.querySelector("html");
     html.setAttribute("data-theme", theme);
@@ -14,6 +16,14 @@ const Navbar = () => {
   const handelTheme = (checked) => {
     setTheme(checked ? "dark" : "light");
   };
+const handleLogOut = () => {
+  logOut()
+    .then(() => {})
+    .catch((error) => {
+      console.log(error);
+    });
+}
+  
 
   const navItems = (
     <>
@@ -127,9 +137,29 @@ const Navbar = () => {
                 </g>
               </svg>
             </label>
-            <Link to="/auth/login" className=" text-white">
-              <Button> Sign In</Button>
-            </Link>
+            {loading ? (
+              loading
+            ) : user ? (
+              <div className="dropdown dropdown-end">
+                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                  <div className="w-10 rounded-full">
+                    <img src={user.photoURL} />
+                  </div>
+                </label>
+                <ul
+                  tabIndex={0}
+                  className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+                >
+                  <li>
+                    <button onClick={handleLogOut}>Logout</button>
+                  </li>
+                </ul>
+              </div>
+            ) : (
+              <Link to="/auth/login" className=" text-white">
+                <Button> Sign In</Button>
+              </Link>
+            )}
           </div>
         </div>
       </MyContainer>

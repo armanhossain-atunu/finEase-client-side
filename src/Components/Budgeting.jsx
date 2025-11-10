@@ -7,7 +7,7 @@ const Budgeting = () => {
       <MyContainer className="py-10">
         <div className="my-10 text-center">
           <h1 className="text-3xl font-bold ">Budgeting</h1>
-          <p className="text-gray-500">
+          <p className="text-sm font-regular">
             Simple ways to track your spending and save more every month.
           </p>
         </div>
@@ -21,7 +21,7 @@ const Budgeting = () => {
               alt="payment-history"
             />
             <h1 className="text-2xl font-medium">Track Your Spending</h1>
-            <p className="text-sm text-gray-500 font-regular">
+            <p className="text-sm  font-regular">
               Monitor where your money goes each month to identify unnecessary
               expenses and opportunities to save.
             </p>
@@ -35,7 +35,7 @@ const Budgeting = () => {
               alt="calendar-plus"
             />
             <h1 className="text-2xl font-medium"> Set Monthly Goals</h1>
-            <p className="text-sm text-gray-500 font-regular">
+            <p className="text-sm font-regular">
               Decide how much you want to save each month and create a realistic
               plan to reach it.
             </p>
@@ -49,7 +49,7 @@ const Budgeting = () => {
               alt="receive-cash"
             />
             <h1 className="text-2xl font-medium">Automate Your Savings</h1>
-            <p className="text-sm text-gray-500 font-regular">
+            <p className="text-sm  font-regular">
               Set up automatic transfers to your savings account right after
               payday — save before you spend.
             </p>
