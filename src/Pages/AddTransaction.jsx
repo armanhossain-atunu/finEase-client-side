@@ -3,19 +3,30 @@ import MyContainer from "../Components/MyContainer";
 import Button from "../Components/Button";
 import { AuthContext } from "../Context/AuthContext";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
 
 const AddTransaction = () => {
   const [date, setDate] = useState("");
-  const { user } = useContext(AuthContext);
+  const { user, setTotalBalance, totalBalance } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleAddTransaction = (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
-    const amount = form.amount.value;
+    const amount = parseFloat(form.amount.value);
     const email = form.email.value;
     const category = form.category.value;
     const type = form.type.value;
     const description = form.description.value;
+    if (amount <= 0) {
+      toast.error("Amount must be greater than 0");
+    }
+    // Safeguard: Expense cannot reduce balance below 1
+    if (type === "expense" && amount >= totalBalance.balance) {
+      toast.error("Expense too high! You can't reduce your balance below 1.");
+      return;
+    }
+
     const transaction = {
       name,
       amount,
@@ -31,7 +42,6 @@ const AddTransaction = () => {
       toast.error("All fields are required");
       return;
     }
-    setDate("");
 
     fetch("http://localhost:3000/myTransactions", {
       method: "POST",
@@ -45,6 +55,22 @@ const AddTransaction = () => {
         if (data.insertedId) {
           toast.success("Transaction Successfully");
           form.reset();
+          navigate("/myTransactions");
+          setDate("");
+
+          // Update totalBalance state
+          let newBalance =
+            type === "income"
+              ? totalBalance.balance + amount
+              : totalBalance.balance - amount;
+
+          if (newBalance <= 0) newBalance = 1; // safeguard
+
+          setTotalBalance({
+            balance: newBalance,
+            income: totalBalance.income + (type === "income" ? amount : 0),
+            expense: totalBalance.expense + (type === "expense" ? amount : 0),
+          });
         }
       });
   };
@@ -112,6 +138,7 @@ const AddTransaction = () => {
                 className="appearance-none border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline"
                 name="amount"
                 type="number"
+                min={"1"}
                 required
                 placeholder="Enter amount"
               />

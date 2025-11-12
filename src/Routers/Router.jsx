@@ -10,6 +10,8 @@ import About from "../Pages/About";
 import UpdateProfile from "../Pages/UpdateProfile";
 import PrivateRoute from "../Context/PrivateRoute";
 import Update from "../Pages/UpdateTransactions";
+import Errorpage from "../Pages/Errorpage";
+import TransactionDetails from "../Pages/TransactionDetails";
 
 const router = createBrowserRouter([
   {
@@ -71,8 +73,17 @@ const router = createBrowserRouter([
         loader: () => fetch("http://localhost:3000/myTransactions"),
       },
       {
+        path: "/transaction/details/:id",
+        element: (
+          <PrivateRoute>
+            <TransactionDetails></TransactionDetails>
+          </PrivateRoute>
+        ),
+        loader: () => fetch("http://localhost:3000/myTransactions"),
+      },
+      {
         path: "*",
-        element: <h1>404 Not Found</h1>,
+        element: <Errorpage></Errorpage>,
       },
     ],
   },

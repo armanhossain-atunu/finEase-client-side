@@ -14,6 +14,11 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [totalBalance, setTotalBalance] = useState({
+    balance: 1, // minimum balance
+    income: 0,
+    expense: 0,
+  });
 
   //   user create
   const createUser = (email, password) => {
@@ -36,7 +41,7 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
-   
+
   // logout
   const logOut = () => {
     setLoading(true);
@@ -60,6 +65,8 @@ const AuthProvider = ({ children }) => {
     setUser,
     loading,
     setLoading,
+    totalBalance,
+    setTotalBalance,
     createUser,
     updateUser,
     login,

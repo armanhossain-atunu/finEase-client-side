@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import MyContainer from "./MyContainer";
 import { AuthContext } from "../Context/AuthContext";
 import { Link } from "react-router";
-import { toast } from "react-toastify";
 
 const AccountSummary = () => {
   const { user } = useContext(AuthContext);
@@ -31,19 +30,16 @@ const AccountSummary = () => {
           .filter((transaction) => transaction.type === "expense")
           .reduce((sum, transactions) => sum + Number(transactions.amount), 0);
         const balance = income - expense;
-        if (balance < 0) {
-          toast.error("Balance is negative! Cannot process transactions.", {
-            position: "top-right",
-            autoClose: 3000,
-          });
-          return; // stop updating the state
-        }
+        console.log(income, expense, balance);
+       
         setTransactions(data);
+        
         setTotalBalance({ balance, income, expense });
       })
       .catch((error) => console.log("error fetching transactions", error));
   }, [user]);
 
+  
   return (
     <MyContainer>
       <div>
