@@ -45,7 +45,7 @@ const TransactionDetails = () => {
 
   // Delete Transaction
   const handelDelete = (id) => {
-    fetch(`http://localhost:3000/transaction/${id}`, {
+    fetch(`http://localhost:3000/transactions/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

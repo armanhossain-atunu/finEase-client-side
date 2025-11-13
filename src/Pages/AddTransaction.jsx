@@ -8,7 +8,8 @@ import Loading from "../Components/Loading";
 
 const AddTransaction = () => {
   const [date, setDate] = useState("");
-  const { user, setTotalBalance, totalBalance,loading } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
+  // console.log(totalBalance,setTotalBalance)
   const navigate = useNavigate();
   const handleAddTransaction = (e) => {
     e.preventDefault();
@@ -23,10 +24,10 @@ const AddTransaction = () => {
       toast.error("Amount must be greater than 0");
     }
     // Safeguard: Expense cannot reduce balance below 1
-    if (type === "expense" && amount >= totalBalance.balance) {
-      toast.error("Expense too high! You can't reduce your balance below 1.");
-      return;
-    }
+    // if (type === "expense" && amount <= totalBalance.balance) {
+    //   toast.error("Expense too high! You can't reduce your balance below 1.");
+    //   return;
+    // }
 
     const transaction = {
       name,
@@ -38,7 +39,7 @@ const AddTransaction = () => {
       date,
       uid: user.uid,
     };
-    console.log(transaction);
+    
     if (!name || !amount || !date || !category || !type || !description) {
       toast.error("All fields are required");
       return;
@@ -60,18 +61,18 @@ const AddTransaction = () => {
           setDate("");
 
           // Update totalBalance state
-          let newBalance =
-            type === "income"
-              ? totalBalance.balance + amount
-              : totalBalance.balance - amount;
+          // let newBalance =
+          //   type === "income"
+          //     ? totalBalance.balance + amount
+          //     : totalBalance.balance - amount;
 
-          if (newBalance <= 0) newBalance = 1; // safeguard
+          // if (newBalance <= 0) newBalance = 1; // safeguard
 
-          setTotalBalance({
-            balance: newBalance,
-            income: totalBalance.income + (type === "income" ? amount : 0),
-            expense: totalBalance.expense + (type === "expense" ? amount : 0),
-          });
+          // setTotalBalance({
+          //   balance: newBalance,
+          //   income: totalBalance.income + (type === "income" ? amount : 0),
+          //   expense: totalBalance.expense + (type === "expense" ? amount : 0),
+          // });
         }
       });
   };

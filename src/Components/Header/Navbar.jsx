@@ -7,7 +7,8 @@ import { AuthContext } from "../../Context/AuthContext";
 
 const Navbar = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
-  const { user, loading, logOut } = useContext(AuthContext);
+  const { user, loading, logOut} = useContext(AuthContext);
+
   const navigate = useNavigate();
   useEffect(() => {
     const html = document.querySelector("html");
