@@ -26,7 +26,7 @@ const TransactionDetails = () => {
     })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:3000/transactions/${id}`, {
+          fetch(`https://finease-server-theta.vercel.app/transactions/${id}`, {
             method: "DELETE",
           })
             .then((res) => res.json())
@@ -51,7 +51,7 @@ const TransactionDetails = () => {
   };
   // Fetch Transactions
   useEffect(() => {
-    fetch(`http://localhost:3000/myTransactions?email=${user?.email}`,
+    fetch(`https://finease-server-theta.vercel.app/myTransactions?email=${user?.email}`,
       {
         headers: {
           authorization: `Bearer ${user.accessToken}`,
@@ -90,7 +90,7 @@ const TransactionDetails = () => {
     (acc, t) => acc + Number(t.amount),
     0
   );
-  console.log(totalIncome, totalExpense);
+
   const renderTable = (data, type) => {
     if (data.length === 0) {
       return (
@@ -133,7 +133,8 @@ const TransactionDetails = () => {
                       )}
                     </td>
                     <td>{transaction.date}</td>
-                    <td>{transaction.Time}</td>
+                    <td>{transaction.description}</td>
+                  
                     <td>
                       <Button>
                         <Link to={`/update/${transaction._id}`}>Update</Link>
@@ -194,7 +195,7 @@ const TransactionDetails = () => {
       {/* Expense Section */}
       <div>
         <h2 className="text-2xl font-semibold text-red-600 mb-2">
-          💸 Expense Transactions {totalExpense}
+          💸 Expense Transactions ${totalExpense}
         </h2>
         {renderTable(expenseTransactions, "Expense")}
       </div>

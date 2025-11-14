@@ -71,7 +71,7 @@ const router = createBrowserRouter([
             <Update></Update>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:3000/myTransactions"),
+        loader: () => fetch("https://finease-server-theta.vercel.app/myTransactions"),
       },
       {
         path: "/transaction/details",

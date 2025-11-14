@@ -24,7 +24,7 @@ const Login = () => {
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, photo, email, password);
+
     const passwordRegex =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     if (!passwordRegex.test(password)) {
@@ -36,13 +36,15 @@ const Login = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        updateUser({ displayName: name, photoURL: photo }).then(() => {
-          setUser({ ...user, displayName: name, photoURL: photo });
-          navigate("/");
-        }).catch((error) => {
-          console.log(error);
-        })
-        console.log(user);
+        updateUser({ displayName: name, photoURL: photo })
+          .then(() => {
+            setUser({ ...user, displayName: name, photoURL: photo });
+            navigate("/");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
         toast.success("Login Successfully");
 
         form.reset();
@@ -60,7 +62,6 @@ const Login = () => {
     googleWithLogin()
       .then((result) => {
         const user = result.user;
-        console.log(user);
         navigate(location.state?.from || "/");
       })
       .catch((error) => {
@@ -146,8 +147,7 @@ const Login = () => {
                     {show ? <FaEye></FaEye> : <FiEyeOff></FiEyeOff>}
                   </span>
                 </div>
-                 <Button className={'z-50 w-full text-black'}> Signup</Button>
-               
+                <Button className={"z-50 w-full text-black"}> Signup</Button>
               </fieldset>
             </form>
             <div className="flex w-[90%] mx-auto flex-col">

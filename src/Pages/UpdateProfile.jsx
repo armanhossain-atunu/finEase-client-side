@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../Context/AuthContext";
+import { toast } from "react-toastify";
 
 const Profile = () => {
   const { user, setUser, updateUser } = useContext(AuthContext);
@@ -9,6 +10,11 @@ const Profile = () => {
     const form = event.target;
     const name = form.name.value;
     const photo = form.photo.value;
+    // Prevent empty submission
+    if (!name || !photo) {
+      toast.error("Please fill in both Name and Photo URL");
+      return;
+    }
     updateUser({ displayName: name, photoURL: photo }).then(() => {
       setUser({ ...user, displayName: name, photoURL: photo });
     });

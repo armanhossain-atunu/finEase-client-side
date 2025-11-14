@@ -11,21 +11,20 @@ const AccountSummary = () => {
     income: 0,
     expense: 0,
   });
-  console.log(totalBalance);
-  console.log(transactions);
 
   useEffect(() => {
     if (!user) return;
 
-    fetch(`http://localhost:3000/myTransactions?email=${user.email}`, {
-      headers: {
-        authorization: `Bearer ${user?.accessToken}`,
-      },
-    }   )
+    fetch(
+      `https://finease-server-theta.vercel.app/myTransactions?email=${user.email}`,
+      {
+        headers: {
+          authorization: `Bearer ${user?.accessToken}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
-        console.log("data fetched successfully db", data);
-
         const income = data
           .filter((transaction) => transaction.type === "income")
           .reduce((sum, transactions) => sum + Number(transactions.amount), 0);
@@ -34,16 +33,14 @@ const AccountSummary = () => {
           .filter((transaction) => transaction.type === "expense")
           .reduce((sum, transactions) => sum + Number(transactions.amount), 0);
         const balance = income - expense;
-        console.log(income, expense, balance);
-       
+
         setTransactions(data);
-        
+
         setTotalBalance({ balance, income, expense });
       })
       .catch((error) => console.log("error fetching transactions", error));
   }, [user]);
 
-  
   return (
     <MyContainer>
       <div>
@@ -59,7 +56,6 @@ const AccountSummary = () => {
             <p className="font-bold">
               $ <span>{totalBalance.balance}</span>
             </p>
-            <Link to="/income">Balance Details</Link>
           </div>
           <div className="bg-blue-400 text-center space-y-2 rounded py-10">
             <h1 className="text-2xl font-bold">Total Income</h1>

@@ -6,9 +6,8 @@ import { toast } from "react-toastify";
 const UpdateTransactions = () => {
   const data = useLoaderData();
   const { _id } = useParams();
-  console.log(data);
-  console.log(_id);
-  const transaction = data?.find((transaction) => transaction._id === _id);
+
+  const transaction = data.find((transaction) => transaction._id === _id);
   const handleUpdate = (event) => {
     event.preventDefault();
 
@@ -29,18 +28,19 @@ const UpdateTransactions = () => {
       toast.error("All fields are required");
       return;
     }
-  
 
-    fetch(`http://localhost:3000/myTransactions/update/${_id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(transaction),
-    })
+    fetch(
+      `https://finease-server-theta.vercel.app/transactions/update/${_id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(transaction),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         toast.success("Successfully updated!");
       })
       .catch((err) => {

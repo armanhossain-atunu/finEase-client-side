@@ -22,7 +22,7 @@ const Reports = () => {
 
   useEffect(() => {
     if (!user?.email) return;
-    fetch(`http://localhost:3000/myTransactions?email=${user.email}`, {
+    fetch(`https://finease-server-theta.vercel.app/myTransactions?email=${user.email}`, {
       headers: {
         authorization: `Bearer ${user?.accessToken}`,
       },

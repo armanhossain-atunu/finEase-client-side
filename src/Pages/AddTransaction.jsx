@@ -45,7 +45,7 @@ const AddTransaction = () => {
       return;
     }
 
-    fetch("http://localhost:3000/myTransactions", {
+    fetch("https://finease-server-theta.vercel.app/myTransactions", {
       method: "POST",
       headers: {
         authorization: `Bearer ${user?.accessToken}`,

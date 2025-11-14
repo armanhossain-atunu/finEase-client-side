@@ -17,16 +17,16 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const { user, login, googleWithLogin, resetPassword, setLoading } =
+  const { login, googleWithLogin, resetPassword, setLoading } =
     useContext(AuthContext);
-  console.log(user);
+
   const handelLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-setEmail(email)
-    console.log(email, password);
+    setEmail(email);
+
     const passwordRegex =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     if (!passwordRegex.test(password)) {
@@ -40,7 +40,7 @@ setEmail(email)
     login(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+
         toast.success("Login Successfully");
         navigate(location.state || "/");
         form.reset();
@@ -59,7 +59,7 @@ setEmail(email)
     googleWithLogin()
       .then((result) => {
         const user = result.user;
-        console.log(user);
+
         navigate(location.state?.from || "/");
       })
       .catch((error) => {
@@ -76,10 +76,9 @@ setEmail(email)
         console.log(error);
       });
   };
-useEffect(() => {
-setEmail(defaultValue => email)
-
-}, [email]);
+  useEffect(() => {
+    setEmail(() => email);
+  }, [email]);
   return (
     <div>
       <div className="mx-auto bg-base-200 pt-18 min-h-[85vh]">
@@ -189,7 +188,9 @@ setEmail(defaultValue => email)
                         required
                       />
                       <div className="flex justify-center mt-5">
-                        <button type="submit" className="btn mx-auto">Submit</button>
+                        <button type="submit" className="btn mx-auto">
+                          Submit
+                        </button>
                       </div>
                     </form>
                   </div>

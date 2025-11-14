@@ -18,7 +18,7 @@ const Banner = () => {
           <Button>Get Started</Button>
         </div>
         <div>
-          <img src="https://i.ibb.co.com/B2pZ9cXk/banner-Img.jpg" alt="" />
+          <img data-aos="fade-right"  src="https://i.ibb.co.com/B2pZ9cXk/banner-Img.jpg" alt="" />
         </div>
       </div>
     </MyContainer>

@@ -27,14 +27,13 @@ const MyTransactions = () => {
   useEffect(() => {
     if (!user?.email) return;
 
-    fetch(`http://localhost:3000/myTransactions?email=${user.email}`,{
+    fetch(`https://finease-server-theta.vercel.app/myTransactions?email=${user.email}`,{
       headers: {
         authorization: `Bearer ${user?.accessToken}`,
       },
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("Fetched transactions:", data);
         const sortedData = sortTransaction(data, sort);
         setTransactions(sortedData);
         setLoading(false);
