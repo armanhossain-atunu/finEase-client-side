@@ -4,8 +4,8 @@ import MyContainer from "./MyContainer";
 const Budgeting = () => {
   return (
     <div className="bg-[#875DF890]">
-      <MyContainer className="py-10">
-        <div className="my-10 text-center">
+      <MyContainer className="py-5">
+        <div className="my-10 mb-5 text-center">
           <h1 className="text-3xl font-bold ">Budgeting</h1>
           <p className="text-sm font-regular">
             Simple ways to track your spending and save more every month.

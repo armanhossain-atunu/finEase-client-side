@@ -7,7 +7,7 @@ import { AuthContext } from "../../Context/AuthContext";
 
 const Navbar = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
-  const { user, loading, logOut} = useContext(AuthContext);
+  const { user, loading, logOut } = useContext(AuthContext);
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -30,14 +30,20 @@ const Navbar = () => {
 
   const navItems = (
     <>
-      <li>
+      <li className=" text-lg font-medium">
         <MyLink to="/">Home</MyLink>
       </li>
-      <li>
+      <li className=" text-lg font-medium">
         <MyLink to="/about">About</MyLink>
       </li>
-      {user ? (
-        <div className="flex flex-col lg:flex-row">
+      <li className=" text-lg font-medium">
+        <MyLink to="/contact">Contact</MyLink>
+      </li>
+      <li className=" text-lg font-medium">
+        <MyLink to="/support">Support</MyLink>
+      </li>
+      {/* {user ? (
+        <div className="flex text-lg font-medium flex-col lg:flex-row">
           <li>
             <MyLink to="/AddTransaction">Add Transaction</MyLink>
           </li>
@@ -50,12 +56,12 @@ const Navbar = () => {
         </div>
       ) : (
         ""
-      )}
+      )} */}
     </>
   );
 
   return (
-    <div className="bg-base-300 shadow-sm fixed top-0 left-0 w-full  to-0 z-50">
+    <div className="bg-base-300 shadow-sm fixed top-0 left-0 w-full to-0 z-50">
       <MyContainer>
         <div className="navbar p-0 ">
           <div className="navbar-start">
@@ -86,6 +92,54 @@ const Navbar = () => {
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
               >
                 {navItems}
+                <label className="toggle text-base-content mr-5 ">
+                  <input
+                    type="checkbox"
+                    value="synthwave"
+                    className="theme-controller"
+                    onChange={(e) => handelTheme(e.target.checked)}
+                    checked={theme === "dark"}
+                  />
+
+                  <svg
+                    aria-label="sun"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                  >
+                    <g
+                      strokeLinejoin="round"
+                      strokeLinecap="round"
+                      strokeWidth="2"
+                      fill="none"
+                      stroke="currentColor"
+                    >
+                      <circle cx="12" cy="12" r="4"></circle>
+                      <path d="M12 2v2"></path>
+                      <path d="M12 20v2"></path>
+                      <path d="m4.93 4.93 1.41 1.41"></path>
+                      <path d="m17.66 17.66 1.41 1.41"></path>
+                      <path d="M2 12h2"></path>
+                      <path d="M20 12h2"></path>
+                      <path d="m6.34 17.66-1.41 1.41"></path>
+                      <path d="m19.07 4.93-1.41 1.41"></path>
+                    </g>
+                  </svg>
+                  <svg
+                    aria-label="moon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                  >
+                    <g
+                      strokeLinejoin="round"
+                      strokeLinecap="round"
+                      strokeWidth="2"
+                      fill="none"
+                      stroke="currentColor"
+                    >
+                      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                    </g>
+                  </svg>
+                </label>
               </ul>
             </div>
             <Link to="/" className="text-2xl font-bold">
@@ -94,16 +148,15 @@ const Navbar = () => {
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">{navItems}</ul>
+
           </div>
 
           <div className="navbar-end ">
-            <label className="toggle text-base-content mr-5">
+            <label className="toggle text-base-content mr-5 hidden lg:grid">
               <input
                 type="checkbox"
-                value="synthwave"
-                className="theme-controller"
+                checked={theme === "dark"}
                 onChange={(e) => handelTheme(e.target.checked)}
-                // defaultChecked={localStorage.getItem("")}
               />
 
               <svg
@@ -129,7 +182,6 @@ const Navbar = () => {
                   <path d="m19.07 4.93-1.41 1.41"></path>
                 </g>
               </svg>
-
               <svg
                 aria-label="moon"
                 xmlns="http://www.w3.org/2000/svg"
@@ -161,12 +213,11 @@ const Navbar = () => {
                 </label>
                 <ul
                   tabIndex={0}
-                  className="menu menu-sm font-normal border dropdown-content mt-3 p-2 shadow-xl bg-base-100 rounded-box w-fit"
+                 className="menu menu-sm font-normal border dropdown-content mt-3 p-2 shadow-xl bg-base-100 rounded-box w-52"
                 >
                   <li className="user-item capitalize">{user?.displayName}</li>
-                  <li className="user-item lowercase">{user?.email}</li>
-                  <li className="user-item">
-                    <Link to="/auth/update">My Profile</Link>
+                  <li className="">
+                    <Link to="/dashboard">Dashboard</Link>
                   </li>
                   <li>
                     <button onClick={handleLogOut}>Logout</button>
@@ -175,7 +226,7 @@ const Navbar = () => {
               </div>
             ) : (
               <Link to="/auth/login" className="">
-                <Button className='z-40'> Sign In</Button>
+                <Button className='z-40 '> Sign In</Button>
               </Link>
             )}
           </div>

@@ -1,3 +1,4 @@
+
 import { useContext, useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
@@ -7,6 +8,7 @@ import { toast } from "react-toastify";
 import signUpVideo from "../assets/signUp.mp4";
 import { AuthContext } from "../Context/AuthContext";
 import Button from "../Components/Button";
+import { BiCheckCircle } from "react-icons/bi";
 
 const Login = () => {
   const [error, setError] = useState("");
@@ -45,7 +47,12 @@ const Login = () => {
             console.log(error);
           });
 
-        toast.success("Login Successfully");
+        toast.success("Login Successfully",
+          {
+            progressClassName: "!bg-[#875df8]",
+            icon: <BiCheckCircle className="text-[#875df8] w-5 h-5" />
+          }
+        );
 
         form.reset();
       })
@@ -63,6 +70,12 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         navigate(location.state?.from || "/");
+        toast.success("Login Successfully",
+          {
+            progressClassName: "!bg-[#875df8]",
+            icon: <BiCheckCircle className="text-[#875df8] w-5 h-5" />
+          }
+        );
       })
       .catch((error) => {
         console.log(error);
@@ -155,9 +168,9 @@ const Login = () => {
               <div className="divider text-white mt-0">OR</div>
               <div className="card rounded-box grid place-items-center"></div>
             </div>
-            <div className="text-center ">
+            <div className="text-center" onClick={handleGoogleLogin}>
               <Button
-                onClick={handleGoogleLogin}
+
                 className="z-50 w-[90%] text-2xl"
               >
                 <FcGoogle />

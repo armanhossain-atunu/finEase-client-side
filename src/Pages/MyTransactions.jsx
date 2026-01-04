@@ -4,6 +4,7 @@ import { Link } from "react-router";
 import { AuthContext } from "../Context/AuthContext";
 import Button from "../Components/Button";
 import { FaRightLeft } from "react-icons/fa6";
+import Loading from "../Components/Loading";
 
 const MyTransactions = () => {
   const { user } = useContext(AuthContext);
@@ -27,7 +28,7 @@ const MyTransactions = () => {
   useEffect(() => {
     if (!user?.email) return;
 
-    fetch(`https://finease-server-theta.vercel.app/myTransactions?email=${user.email}`,{
+    fetch(`https://finease-server-theta.vercel.app/myTransactions?email=${user.email}`, {
       headers: {
         authorization: `Bearer ${user?.accessToken}`,
       },
@@ -46,10 +47,40 @@ const MyTransactions = () => {
 
   return (
     <MyContainer className={'mt-16'}>
-      <h1 className="text-2xl font-bold my-5">My Transactions</h1>
+      <div className="flex justify-between items-center">
+        <h1 className="text-2xl font-bold my-5">My Transactions</h1>
+
+        <details className="dropdown dropdown-end">
+          <summary className="btn btn-sm btn-outline cursor-pointer">
+            Sort
+          </summary>
+
+          <ul className="menu dropdown-content bg-base-100 rounded-box z-50 w-40 p-2 shadow">
+            <li>
+              <button
+                type="button"
+                onClick={() => handleSort("desc")}
+                className="flex items-center gap-2"
+              >
+                High <FaRightLeft /> Low
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                onClick={() => handleSort("asc")}
+                className="flex items-center gap-2"
+              >
+                Low <FaRightLeft /> High
+              </button>
+            </li>
+          </ul>
+        </details>
+      </div>
+
 
       {loading ? (
-        <h1>Loading...</h1>
+        <Loading></Loading>
       ) : transactions.length === 0 ? (
         <h1 className="text-center text-5xl font-bold">
           No Transactions Found
@@ -58,30 +89,11 @@ const MyTransactions = () => {
         <div className="overflow-x-auto">
           <table className="table table-xs">
             <thead>
-              <tr className="bg-base-200">
+              <tr className="bg-base-200 text-center">
                 <th>SN</th>
                 <th>Category</th>
-                <th>
-                  Amount
-                  <details className="dropdown inline-block ml-1">
-                    <summary className="cursor-pointer z-50"></summary>
-                    <ul className="menu dropdown-content bg-base-100 rounded-box z-[1px] w-36 p-2 shadow-sm">
-                      <li>
-                        <a onClick={() => handleSort("desc")}>
-                          High <FaRightLeft />
-                          Low
-                        </a>
-                      </li>
-                      <li>
-                        <a onClick={() => handleSort("asc")}>
-                          Low
-                          <FaRightLeft />
-                          high
-                        </a>
-                      </li>
-                    </ul>
-                  </details>
-                </th>
+                <th>Amount</th>
+                <th>Transaction</th>
                 <th>Type</th>
                 <th>Date</th>
                 <th>Details</th>
@@ -89,10 +101,11 @@ const MyTransactions = () => {
             </thead>
             <tbody>
               {transactions.map((transaction, index) => (
-                <tr key={transaction._id}>
+                <tr className="text-center" key={transaction._id}>
                   <th>{index + 1}</th>
                   <td>{transaction.category}</td>
                   <td>{transaction.amount}</td>
+                  <td>{transaction.uid}</td>
                   <td>{transaction.type}</td>
                   <td>{transaction.date}</td>
                   <td>

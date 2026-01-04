@@ -14,6 +14,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { AuthContext } from "../Context/AuthContext";
+import Loading from "../Components/Loading";
 
 const Reports = () => {
   const { user } = useContext(AuthContext);
@@ -78,7 +79,7 @@ const Reports = () => {
       </p>
 
       {loading ? (
-        <h2 className="text-center text-xl">Loading...</h2>
+       <Loading></Loading>
       ) : transactions.length === 0 ? (
         <h2 className="text-center text-xl">No transactions found</h2>
       ) : (

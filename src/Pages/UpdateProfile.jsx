@@ -22,9 +22,9 @@ const Profile = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mb-10">
+    <div className="max-w-md mx-auto mt-20 mb-10">
       <div className=" bg-base-300 pb-5 rounded-lg ">
-        <h1 className="text-3xl font-bold text-center pt-3 mt-3">Profile</h1>
+        <h1 className="text-3xl font-bold text-center pt-3 mt-3">Update Profile</h1>
         <img
           className="mx-auto w-40 h-40 rounded-full mt-5"
           src={user?.photoURL}

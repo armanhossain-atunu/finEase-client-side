@@ -1,91 +1,95 @@
 import { createBrowserRouter } from "react-router";
 import MainLayout from "../Layout/MainLayout";
+import DashboardLayout from "../Layout/DashboardLayout";
+
 import Home from "../Pages/Home";
 import Login from "../Pages/Login";
 import Signup from "../Pages/Signup";
 import MyTransactions from "../Pages/MyTransactions";
 import AddTransaction from "../Pages/AddTransaction";
-import Reports from "../Pages/Reports ";
 import About from "../Pages/About";
 import UpdateProfile from "../Pages/UpdateProfile";
-import PrivateRoute from "../Context/PrivateRoute";
 import Update from "../Pages/UpdateTransactions";
-import Errorpage from "../Pages/Errorpage";
 import TransactionDetails from "../Pages/TransactionDetails";
+import Contact from "../Pages/Contact";
+import Errorpage from "../Pages/Errorpage";
 import Loading from "../Components/Loading";
+import PrivateRoute from "../Context/PrivateRoute";
+import Reports from "../Pages/Reports ";
+import DashboardHome from "../Pages/DashboardHome";
+import SupportPage from "../Pages/SupportPage";
+import Jobs from "../Pages/Jobs";
+import Branding from "../Pages/Branding";
+import Marketing from "../Pages/Marketing";
+import Design from "../Pages/Design";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    Component: MainLayout,
-    hydrateFallbackElement: <Loading></Loading>,
+    element: <MainLayout />,
+    hydrateFallbackElement: <Loading />,
     children: [
+      { index: true, element: <Home /> },
+      { path: "/about", element: <About /> },
+      { path: "/contact", element: <Contact /> },
+      { path:'/jobs', element: <Jobs></Jobs>},
+      { path:'/Branding', element: <Branding></Branding>},
+      { path:'/Design', element: <Design></Design>},
+      { path:'/Marketing', element: <Marketing></Marketing>},
+      { path: "/support", element: <SupportPage /> },
+      { path: "/auth/login", element: <Login /> },
+      { path: "/auth/signup", element: <Signup /> },
       {
-        index: true,
-        element: <Home></Home>,
-      },
-      {
-        path: "/about",
-        Component: About,
-      },
-      {
-        path: "/MyTransactions",
+        path: "transaction/details",
         element: (
           <PrivateRoute>
-            <MyTransactions></MyTransactions>
+            <TransactionDetails />
           </PrivateRoute>
         ),
       },
+
       {
-        path: "/AddTransaction",
+        path: "update/:_id",
         element: (
           <PrivateRoute>
-            <AddTransaction></AddTransaction>
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/Reports",
-        element: <Reports></Reports>,
-      },
-      {
-        path: "/auth/login",
-        element: <Login></Login>,
-      },
-      {
-        path: "/auth/signup",
-        element: <Signup></Signup>,
-      },
-      {
-        path: "/auth/update",
-        element: (
-          <PrivateRoute>
-            <UpdateProfile></UpdateProfile>
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/update/:_id",
-        element: (
-          <PrivateRoute>
-            <Update></Update>
+            <Update />
           </PrivateRoute>
         ),
         loader: () => fetch("https://finease-server-theta.vercel.app/myTransactions"),
       },
-      {
-        path: "/transaction/details",
-        element: (
-          <PrivateRoute>
-            <TransactionDetails></TransactionDetails>
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "*",
-        element: <Errorpage></Errorpage>,
-      },
+
+      { path: "*", element: <Errorpage /> },
     ],
+  },
+
+  // ================= DASHBOARD =================
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
+    children: [
+      { index: true, element: <DashboardHome /> },
+      {
+        path: "update-profile",
+        element: <UpdateProfile />,
+      },
+      {
+        path: "reports",
+        element: <Reports />,
+      },
+      {
+        path: "MyTransactions",
+        element: <MyTransactions />,
+      },
+      {
+        path: "AddTransaction",
+        element: <AddTransaction />,
+      }
+    ],
+
   },
 ]);
 

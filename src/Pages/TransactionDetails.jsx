@@ -105,12 +105,14 @@ const TransactionDetails = () => {
         <div className="overflow-x-auto mt-3">
           <table className="table table-xs w-full">
             <thead>
-              <tr>
+              <tr className="text-center">
                 <th>SN</th>
                 <th>Category</th>
                 <th>Amount</th>
                 <th>Date</th>
                 <th>Details</th>
+                <th>Update</th>
+                <th>Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -118,7 +120,7 @@ const TransactionDetails = () => {
                 .reverse()
                 .slice(0, visibleCount)
                 .map((transaction, index) => (
-                  <tr key={transaction._id}>
+                  <tr className="text-center" key={transaction._id}>
                     <th>{index + 1}</th>
                     <td>{transaction.category}</td>
                     <td>
@@ -180,7 +182,7 @@ const TransactionDetails = () => {
 
   return (
     <MyContainer>
-      <h1 className="text-3xl font-bold text-center mb-6">
+      <h1 className="text-3xl font-bold text-center mb-6 mt-20">
         My Transactions 💼
       </h1>
 

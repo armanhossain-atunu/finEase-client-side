@@ -5,7 +5,7 @@ const Features = () => {
   return (
     <div>
       <MyContainer>
-        <div className="text-center my-15">
+        <div className="text-center mt-10 mb-5">
           <h1 className="text-3xl font-bold">Features</h1>
           <p className="text-gray-500">
             Money Manager has easy and various features.
@@ -14,12 +14,15 @@ const Features = () => {
         <div className="flex flex-col md:flex-row justify-between">
           {/*  left */}
           <div className="space-y-3">
-            <div className="flex items-center group gap-5">
+            <div className="flex items-center group gap-5"
+              data-aos="fade-up"
+              data-aos-anchor-placement="bottom-bottom"
+            >
               <div className="text-end">
                 <details
                   className="collapse bg-base-100 border border-base-300"
                   name="my-accordion-det-1"
-                 
+
                 >
                   <summary className="collapse-title font-semibold">
                     Easy Content Access
@@ -37,7 +40,10 @@ const Features = () => {
                 />
               </div>
             </div>
-            <div className="flex items-center group gap-5">
+            <div className="flex items-center group gap-5"
+              data-aos="fade-up"
+              data-aos-anchor-placement="bottom-bottom"
+            >
               <div className="text-end">
                 <details
                   className="collapse bg-base-100 border border-base-300"
@@ -59,12 +65,15 @@ const Features = () => {
                 />
               </div>
             </div>
-            <div className="flex items-center group gap-5">
+            <div className="flex items-center group gap-5"
+              data-aos="fade-up"
+              data-aos-anchor-placement="bottom-bottom"
+            >
               <div className="text-end">
                 <details
                   className="collapse bg-base-100 border border-base-300"
                   name="my-accordion-det-1"
-                  
+
                 >
                   <summary className="collapse-title font-semibold">
                     Photo Save
@@ -83,12 +92,15 @@ const Features = () => {
               </div>
             </div>
 
-            <div className="flex items-center group gap-5">
+            <div className="flex items-center group gap-5"
+              data-aos="fade-up"
+              data-aos-anchor-placement="bottom-bottom"
+            >
               <div className="text-end">
                 <details
                   className="collapse bg-base-100 border border-base-300"
                   name="my-accordion-det-1"
-                 
+
                 >
                   <summary className="collapse-title font-semibold">
                     Improved
@@ -111,12 +123,15 @@ const Features = () => {
 
           {/* right */}
           <div className="space-y-3">
-            <div className="flex flex-row-reverse items-center group  gap-5">
+            <div className="flex flex-row-reverse items-center group  gap-5"
+              data-aos="fade-up"
+              data-aos-anchor-placement="bottom-bottom"
+            >
               <div className="text-left">
                 <details
                   className="collapse bg-base-100 border border-base-300"
                   name="my-accordion-det-1"
-                
+
                 >
                   <summary className="collapse-title font-semibold">
                     Aesthetically Improved Charts more
@@ -134,12 +149,15 @@ const Features = () => {
                 />
               </div>
             </div>
-            <div className="flex flex-row-reverse items-center group gap-5">
+            <div className="flex flex-row-reverse items-center group gap-5"
+              data-aos="fade-up"
+              data-aos-anchor-placement="bottom-bottom"
+            >
               <div className="flex flex-col justify-start">
                 <details
                   className="collapse bg-base-100 border border-base-300"
                   name="my-accordion-det-1"
-                 
+
                 >
                   <summary className="collapse-title font-semibold">
                     Easier Double-entry Booking
@@ -157,12 +175,15 @@ const Features = () => {
                 />
               </div>
             </div>
-            <div className="flex flex-row-reverse items-center group gap-5">
+            <div className="flex flex-row-reverse items-center group gap-5"
+              data-aos="fade-up"
+              data-aos-anchor-placement="bottom-bottom"
+            >
               <div>
                 <details
                   className="collapse bg-base-100 border border-base-300"
                   name="my-accordion-det-1"
-                
+
                 >
                   <summary className="collapse-title font-semibold">
                     Advanced Budget Feature
@@ -180,12 +201,15 @@ const Features = () => {
                 />
               </div>
             </div>
-            <div className="flex flex-row-reverse items-center group gap-5">
+            <div className="flex flex-row-reverse items-center group gap-5"
+              data-aos="fade-up"
+              data-aos-anchor-placement="bottom-bottom"
+            >
               <div>
                 <details
                   className="collapse bg-base-100 border border-base-300"
                   name="my-accordion-det-1"
-                  
+
                 >
                   <summary className="collapse-title font-semibold">
                     Asset Graphs

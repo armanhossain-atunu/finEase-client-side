@@ -23,17 +23,16 @@ const Footer = () => {
         </aside>
         <nav>
           <h6 className="footer-title">Services</h6>
-          <a className="link link-hover">Branding</a>
-          <a className="link link-hover">Design</a>
-          <a className="link link-hover">Marketing</a>
-          <a className="link link-hover">Advertisement</a>
+          <a href="/Branding" className="link link-hover">Branding</a>
+          <a href="/Design" className="link link-hover">Design</a>
+          <a href="/Marketing" className="link link-hover">Marketing</a>
+
         </nav>
         <nav>
           <h6 className="footer-title">Company</h6>
-          <a className="link link-hover">About us</a>
-          <a className="link link-hover">Contact</a>
-          <a className="link link-hover">Jobs</a>
-          <a className="link link-hover">Press kit</a>
+          <a href="/about" className="link link-hover">About us</a>
+          <a href="/contact" className="link link-hover">Contact</a>
+          <a href="/jobs" className="link link-hover">Jobs</a>
         </nav>
         <nav>
           <h4>Follow Us</h4>
@@ -53,7 +52,7 @@ const Footer = () => {
       <footer className="footer sm:footer-horizontal footer-center bg-base-300 text-base-content p-4">
         <aside>
           <p>
-            Copyright © {new Date().getFullYear()} - All right reserved by
+            Copyright © {new Date().getFullYear()} - All right reserved by 
             <Link to="/">
               Fin<span className="text-[#875DF8]">Ease</span>
             </Link>

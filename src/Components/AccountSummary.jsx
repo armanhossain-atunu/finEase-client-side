@@ -5,7 +5,7 @@ import { Link } from "react-router";
 
 const AccountSummary = () => {
   const { user } = useContext(AuthContext);
-  const [transactions, setTransactions] = useState([]);
+  const [transaction, setTransactions] = useState([]);
   const [totalBalance, setTotalBalance] = useState({
     balance: 0,
     income: 0,
@@ -50,27 +50,27 @@ const AccountSummary = () => {
             A quick snapshot of your income, expenses, and total balance.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5" data-aos="fade-up-right">
           <div className="bg-green-400 text-center space-y-2 rounded py-10">
             <h1 className="text-2xl font-bold">Total Balance</h1>
             <p className="font-bold">
               $ <span>{totalBalance.balance}</span>
             </p>
           </div>
-          <div className="bg-blue-400 text-center space-y-2 rounded py-10">
+          <div className="bg-blue-400 text-center space-y-2 rounded py-10" data-aos="fade-left">
             <h1 className="text-2xl font-bold">Total Income</h1>
             <p className="font-bold">
               $ <span>{totalBalance.income}</span>
             </p>
-            <Link to="/transaction/details">Income Details</Link>
+            <Link to="/transaction/details" className="hover:border px-4 rounded-sm">Income Details</Link>
             {/* <Button className="z-10 font-sans">Details</Button> */}
           </div>
-          <div className="bg-red-400 text-center space-y-2  rounded py-10">
+          <div className="bg-red-400 text-center space-y-2  rounded py-10" data-aos="fade-up-left">
             <h1 className="text-2xl font-bold">Total Expenses</h1>
             <p className="font-bold">
               $ <span>{totalBalance.expense}</span>
             </p>
-            <Link to="/transaction/details" className="hover:border">
+            <Link to="/transaction/details" className="hover:border px-4 rounded-sm">
               Expenses Details
             </Link>
           </div>

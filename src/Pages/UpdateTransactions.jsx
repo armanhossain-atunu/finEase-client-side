@@ -2,6 +2,7 @@ import React from "react";
 import { useLoaderData, useParams } from "react-router";
 import MyContainer from "../Components/MyContainer";
 import { toast } from "react-toastify";
+import { BiCheckCircle } from "react-icons/bi";
 
 const UpdateTransactions = () => {
   const data = useLoaderData();
@@ -41,7 +42,11 @@ const UpdateTransactions = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        toast.success("Successfully updated!");
+        toast.success("Successfully updated!", {
+          progressClassName: "!bg-[#875df8]",
+          icon: <BiCheckCircle className="text-[#875df8] w-5 h-5" />
+
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -49,7 +54,7 @@ const UpdateTransactions = () => {
   };
 
   return (
-    <MyContainer className="mt-20">
+    <MyContainer className="mt-20 mb-5">
       <p className="text-center font-bold text-2xl">Transaction Update</p>
       <form onSubmit={handleUpdate} className="flex flex-col max-w-md mx-auto ">
         {/* Checkbox Field */}

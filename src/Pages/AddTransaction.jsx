@@ -5,6 +5,7 @@ import { AuthContext } from "../Context/AuthContext";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
 import Loading from "../Components/Loading";
+import { BiCheckCircle } from "react-icons/bi";
 
 const AddTransaction = () => {
   const [date, setDate] = useState("");
@@ -39,13 +40,13 @@ const AddTransaction = () => {
       date,
       uid: user.uid,
     };
-    
+
     if (!name || !amount || !date || !category || !type || !description) {
       toast.error("All fields are required");
       return;
     }
 
-    fetch("https://finease-server-theta.vercel.app/myTransactions", {
+    fetch(`https://finease-server-theta.vercel.app/myTransactions`, {
       method: "POST",
       headers: {
         authorization: `Bearer ${user?.accessToken}`,
@@ -56,24 +57,13 @@ const AddTransaction = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          toast.success("Transaction Successfully");
+          toast.success("Transaction Successfully!", {
+            progressClassName: "!bg-[#875df8]",
+            icon: <BiCheckCircle className="text-[#875df8] w-5 h-5" />
+          });
           form.reset();
           navigate("/myTransactions");
           setDate("");
-
-          // Update totalBalance state
-          // let newBalance =
-          //   type === "income"
-          //     ? totalBalance.balance + amount
-          //     : totalBalance.balance - amount;
-
-          // if (newBalance <= 0) newBalance = 1; // safeguard
-
-          // setTotalBalance({
-          //   balance: newBalance,
-          //   income: totalBalance.income + (type === "income" ? amount : 0),
-          //   expense: totalBalance.expense + (type === "expense" ? amount : 0),
-          // });
         }
       });
   };
@@ -83,8 +73,8 @@ const AddTransaction = () => {
   }
 
   return (
-    <MyContainer className="mt-17">
-      <div className=" min-h-screen max-w-lg mx-auto text-center shadow-2xl p-10 border ">
+    <MyContainer className="mt-10">
+      <div className=" min-h-screen max-w-lg mx-auto text-center rounded-xl shadow p-10 mt-10 mb-10">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div></div>
           <h1 className="text-3xl font-bold">Add Transaction</h1>
