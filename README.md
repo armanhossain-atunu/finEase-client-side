@@ -88,5 +88,6 @@ npm run build
 ```
 
 ### 🌐 Live Demo
-### 🚀 Live Application
-👉 https://fineaseappbd.netlify.app
+### 🚀 <a href="https://fineaseappbd.netlify.app" target="_blank" rel="noopener noreferrer">
+Live Application
+</a>
