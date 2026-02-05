@@ -12,7 +12,8 @@ Income, Expense, Balance, Reports এবং Transaction হিস্টোরি
 ### 👤 Authentication (Firebase / Custom Backend Token)
 - User Login / Register
 - Protected Private Routes
-- Logout + Token Store in LocalStorage
+- Logout
+- Token stored in LocalStorage
 
 ### 💸 Transaction Management
 - Add Transaction
@@ -30,7 +31,7 @@ Income, Expense, Balance, Reports এবং Transaction হিস্টোরি
 ### 🧭 Clean UI/UX
 - TailwindCSS Design
 - Fully Responsive
-- Dark/Light Mode Ready
+- Dark / Light Mode Ready
 - Toast Messages for Alerts
 
 ---
@@ -38,7 +39,7 @@ Income, Expense, Balance, Reports এবং Transaction হিস্টোরি
 ## 🛠️ Tech Stack
 
 | Layer | Technology |
-|-------|------------|
+|------|------------|
 | Frontend Framework | React.js |
 | Router | React Router DOM |
 | State Management | Context API |
@@ -66,17 +67,3 @@ Income, Expense, Balance, Reports এবং Transaction হিস্টোরি
 ```bash
 git clone https://github.com/armanhossain-atunu/finEase-client-side.git
 cd finEase-client-side
-
-📦 Install Dependencies
-npm install
-
-▶️ Run the Project
-npm run dev
-
-
-অ্যাপটি রান করবে:
-
-http://localhost:5173
-
-🏗️ Build for Production
-npm run build
