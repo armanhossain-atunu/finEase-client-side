@@ -87,7 +87,6 @@ http://localhost:5173
 npm run build
 ```
 
-### 🌐 Live Demo
-🚀 <a href="https://fineaseappbd.netlify.app" target="_blank" rel="noopener noreferrer">
-Live Application
+🌐 <a href="https://fineaseappbd.netlify.app" target="_blank">
+ Live Demo
 </a>
