@@ -68,12 +68,25 @@ Income, Expense, Balance, Reports এবং Transaction হিস্টোরি
 git clone https://github.com/armanhossain-atunu/finEase-client-side.git
 cd finEase-client-side
 ```
-### Install
+### 📦 Install Dependencies
 ```bash
 npm install
 ```
 
-### Run 
+### ▶️ Run the Project
 ```bash
 npm run dev
 ```
+
+অ্যাপটি রান করবে:
+```bash
+http://localhost:5173
+```
+### 🏗️ Build for Production
+```bash
+npm run build
+```
+
+### 🌐 Live Demo
+### 🚀 Live Application
+👉 https://fineaseappbd.netlify.app
