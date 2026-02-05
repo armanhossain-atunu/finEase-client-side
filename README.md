@@ -66,6 +66,3 @@ Income, Expense, Balance, Reports এবং Transaction হিস্টোরি
 ```bash
 git clone https://github.com/armanhossain-atunu/finEase-client-side.git
 cd finEase-client-side
-
-### 📦 Install Dependencies
-npm install
