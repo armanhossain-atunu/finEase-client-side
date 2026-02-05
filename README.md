@@ -49,24 +49,36 @@ Income, Expense, Balance, Reports এবং Transaction হিস্টোরি
 
 ---
 
-📦 Project Setup (Local)
+## 📦 Project Setup (Local)
+
 এই প্রজেক্টটি লোকালি রান করতে নিচের ধাপগুলো অনুসরণ করুন।
-✅ Prerequisites
-Node.js (v16+ recommended)
-npm বা yarn
-Git
-📥 Clone Repository
-git clone https://github.com/your-username/finease-frontend.git
-cd finease-frontend
-📦 Install Dependencies
+
+### ✅ Prerequisites
+নিশ্চিত করুন আপনার মেশিনে নিচের সফটওয়্যারগুলো ইনস্টল করা আছে:
+
+- Node.js (v16+ recommended)
+- npm বা yarn
+- Git
+
+---
+
+### 📥 Clone Repository
+```bash
+git clone https://github.com/armanhossain-atunu/finEase-client-side.git
+cd finEase-client-side
+
+### 📦 Install Dependencies
 npm install
-▶️ Run the Project
+### ▶️ Run the Project
 npm run dev
-অ্যাপটি রান করবে:
+### অ্যাপটি রান করবে:
 http://localhost:5173
-🏗️ Build for Production
+### 🏗️ Build for Production
 npm run build
 
-🌐 Live Demo
-🚀 Live Application
+### 🌐 Live Demo
+###🚀 Live Application
 👉 https://fineaseappbd.netlify.app
+
+
+
